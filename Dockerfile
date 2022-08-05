@@ -3,18 +3,11 @@ FROM quay.io/centos/centos:stream8
 RUN dnf install -y python3.9
 
 
-
 WORKDIR /myportfolio
 
-COPY requirements.txt .
+COPY ..
 
 RUN pip3 install -r requirements.txt
-
-CHMOD +X ./run-test.sh
-
-RUN ./run-test.sh
-
-COPY . .
 
 CMD ["flask", "run", "--host=0.0.0.0"]
 
